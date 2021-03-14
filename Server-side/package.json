@@ -1,0 +1,20 @@
+{
+  "name": "server-side",
+  "version": "1.0.0",
+  "description": "Complaint management portal",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Areenbadran/PwC-Assignment.git"
+  },
+  "author": "Areen Badran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Areenbadran/PwC-Assignment/issues"
+  },
+  "homepage": "https://github.com/Areenbadran/PwC-Assignment#readme"
+}
