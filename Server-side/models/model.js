@@ -17,7 +17,7 @@ module.exports = {
         console.log("Model");
         connection.query(queryStr, function (err, result) {
           callback(err, result);
-          console.log("errror", err);
+          console.log("error", err);
         });
       },
 
