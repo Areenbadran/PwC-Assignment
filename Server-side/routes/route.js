@@ -7,7 +7,7 @@ router.get("/getAllComplaints", controller.getAllComplaints);
 
 router.get("/getUserComplaints/:id", controller.getUserComplaints);
 
-
+router.post("/status", controller.actions);
 
 
 module.exports.router = router;

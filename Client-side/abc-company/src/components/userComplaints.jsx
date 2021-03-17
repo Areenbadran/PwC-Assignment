@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import $ from 'jquery';
-import swal from 'sweetalert';
-import Background from '../images/abc-5083097_1281.jpg';
 import logo from "../images/logo2.png";
 
 
@@ -57,7 +55,7 @@ export default class UserComplaints extends Component {
                <a href="https://www.youtube.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fab fa-youtube fa-1x"></i></a>&nbsp;&nbsp;
                <a href="https://mail.google.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fas fa-envelope fa-1x"></i></a>&nbsp;&nbsp;
                <a href="https://www.instagram.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fab fa-instagram fa-1x"></i></a><br/><br/>
-               <button onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id'); window.location=('/')}}  style={{color:"white"}} className="btn btn-outline-primary"> Sign out </button>
+               <button onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id'); localStorage.removeItem('user'); window.location=('/')}}  style={{color:"white"}} className="btn btn-outline-primary"> Sign out </button>
             </div>
           </div>
         </div>
@@ -95,7 +93,7 @@ export default class UserComplaints extends Component {
                      <tr>
 
                      <td>{complaint.title}</td>
-                     <td >{complaint.gender}</td>
+                     <td>{complaint.gender}</td>
                      <td>{complaint.comment}</td>
                      <td>{complaint.status}</td>
 

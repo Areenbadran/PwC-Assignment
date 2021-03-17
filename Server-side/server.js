@@ -71,6 +71,7 @@ app.post("/signup", (req, res) => {
 app.post("/signin", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+  const userType = req.body.userType;
   const id = req.body.id;
   //Check if user's email exist in the database
   connection.query("SELECT * FROM user WHERE email = ?;", email, (err, result) => {
@@ -81,7 +82,7 @@ app.post("/signin", (req, res) => {
        console.log(result);
        //check the bycrypted password
       bcrypt.compare(password, result[0].password, (error, response) => {
-      if (response) {
+      if (response && userType === result[0].userType) {
            req.body.id = result[0].user_id  //comment this
            //Create the token
           const token = jwt.sign({id}, process.env.SECRET_TOKEN);

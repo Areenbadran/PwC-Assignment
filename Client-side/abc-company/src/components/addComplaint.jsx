@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import $ from 'jquery';
-import swal from 'sweetalert';
 import Background from '../images/abc-5083097_1281.jpg';
 import logo from "../images/logo2.png";
 
@@ -47,7 +46,7 @@ export default class AddComplaint extends Component {
             method: 'POST',
             url:'http://localhost:3000/addComplaint',
             data : JSON.stringify({
-            title: this.state.title ,
+            title: this.state.title,
             gender: this.state.gender,
             comment: this.state.comment,
             status: this.state.status,
@@ -62,7 +61,7 @@ export default class AddComplaint extends Component {
             }
           });
 
-          window.location = "/getUserComplaints/:id";
+          window.location = "/userComplaints";
         }
 
  
@@ -87,7 +86,7 @@ export default class AddComplaint extends Component {
                <a href="https://www.youtube.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fab fa-youtube fa-1x"></i></a>&nbsp;&nbsp;
                <a href="https://mail.google.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fas fa-envelope fa-1x"></i></a>&nbsp;&nbsp;
                <a href="https://www.instagram.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fab fa-instagram fa-1x"></i></a><br/><br/>
-               <button onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id'); window.location=('/')}}  style={{color:"white"}} className="btn btn-outline-primary"> Sign out </button>
+               <button onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id'); localStorage.removeItem('user'); window.location=('/')}}  style={{color:"white"}} className="btn btn-outline-primary"> Sign out </button>
             </div>
           </div>
         </div>
@@ -127,21 +126,21 @@ export default class AddComplaint extends Component {
 				<div class="col">
                     <label for="user">Choose gender:</label>&nbsp;&nbsp;
 
-                    <select name="user" id="user" onChange= {this.handleChangeGender}>
+                    <select name="user" className="user" onChange= {this.handleChangeGender}>
                     <option value = "">---</option>
                     <option value = "female" >Female</option>
                     <option value = "male" >Male</option>
                     </select>
                 </div>
 			</div>        	
-        </div>
+      </div>
 
         <div class="form-group">
-			<div class="row">
+		    	<div class="row">
             <label for="user">Comment:</label>&nbsp;&nbsp;
 				<div class="col"><textarea type="text" class="form-control" placeholder="Comment" required={true}  value = {this.state.comment} onChange= {this.handleChangeComment}/></div>
 			</div>        	
-        </div>
+    </div>
         
 		<div class="form-group">
             <button type="submit" onClick= {this.handleSubmit} class="btn btn-primary btn-lg btn-block">Send</button><br/>

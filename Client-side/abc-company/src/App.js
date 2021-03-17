@@ -7,10 +7,14 @@ import Signin from "./components/signin";
 import AddComplaint from "./components/addComplaint";
 import UserComplaints from "./components/userComplaints";
 import AdminComplaints from "./components/adminComplaints";
-// import logo from './logo.svg';
+import ProtectedCustomer from './ProtectedCustomer';
+import ProtectedAdmin from './ProtectedAdmin';
 
 function App() {
-  const id = localStorage.getItem('id');
+  const token = localStorage.getItem('token');
+  const user =  localStorage.getItem('user');
+ 
+
   return (
     <div>
     <Router className="container">
@@ -19,9 +23,9 @@ function App() {
       <Route path="/" exact component={Home} />
       <Route path="/signup" exact component={Signup}/>
       <Route path="/signin" exact component={Signin}/>
-      <Route path="/addComplaint" component={AddComplaint}/>
-      <Route path="/userComplaints" component={UserComplaints}/>
-      <Route path="/getAllComplaints" component={AdminComplaints}/>
+      <ProtectedCustomer path="/addComplaint" component={AddComplaint} token={token} user={user}/>
+      <ProtectedCustomer path="/userComplaints" component={UserComplaints} token={token} user={user}/>
+      <ProtectedAdmin path="/getAllComplaints" component={AdminComplaints} token={token} user={user}/>
     </div>
 
   </Router>
@@ -31,20 +35,3 @@ function App() {
 
 export default App;
 
-
-/* 
- <header className="App-header">
-<img src={logo} className="App-logo" alt="logo" />
-<p>
-  Edit <code>src/App.js</code> and save to reload.
-</p>
-<a
-  className="App-link"
-  href="https://reactjs.org"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Learn React
-</a>
-</header>
-*/

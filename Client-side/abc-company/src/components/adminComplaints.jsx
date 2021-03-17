@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import $ from 'jquery';
-import swal from 'sweetalert';
-import Background from '../images/abc-5083097_1281.jpg';
 import logo from "../images/logo2.png";
 
 
@@ -14,24 +12,67 @@ export default class UserComplaints extends Component {
         }
       }
 
-
       componentDidMount() {
-         var that = this;
-          $.ajax({
-            method: 'GET',
-            url:"http://localhost:3000/getAllComplaints",
-            contentType: "application/json",
-            success: function(data){
-              console.log('success in get user complaints', data);
-              that.setState({
-                  complaints: data
-              })
-            },
-            error: function(err){
-              console.log('error:' ,err)
-            }
-          });
+        var that = this;
+         $.ajax({
+           method: 'GET',
+           url:"http://localhost:3000/getAllComplaints",
+           contentType: "application/json",
+           success: function(data){
+             console.log('success in get user complaints', data);
+             that.setState({
+                 complaints: data
+             })
+           },
+           error: function(err){
+             console.log('error:' ,err)
+           }
+         });
+     }
+
+
+      acceptAction(e) {
+          console.log(e);
+        $.ajax({
+          method: 'POST',
+          url:'http://localhost:3000/status',
+          data : JSON.stringify({
+          complaint_id: e,
+          status: "Accepted",
+          }),
+          contentType: "application/json",
+          success: function(data){
+            console.log('success');
+          },
+          error: function(err){
+            console.log('error:' ,err)
+          }
+        });
+        window.location = "/getAllComplaints";
       }
+
+      rejectAction(e) {
+        console.log(e);
+      $.ajax({
+        method: 'POST',
+        url:'http://localhost:3000/status',
+        data : JSON.stringify({
+        complaint_id: e,
+        status: "Rejected",
+        }),
+        contentType: "application/json",
+        success: function(data){
+          console.log('success');
+        },
+        error: function(err){
+          console.log('error:' ,err)
+        }
+      });
+      window.location = "/getAllComplaints";
+    }
+
+
+     
   
 
  
@@ -56,7 +97,7 @@ export default class UserComplaints extends Component {
                <a href="https://www.youtube.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fab fa-youtube fa-1x"></i></a>&nbsp;&nbsp;
                <a href="https://mail.google.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fas fa-envelope fa-1x"></i></a>&nbsp;&nbsp;
                <a href="https://www.instagram.com/" className="text-white" class="contact" style={{color:"rgba(30, 139, 195, 1)"}}><i class="fab fa-instagram fa-1x"></i></a><br/><br/>
-               <button onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id'); window.location=('/')}}  style={{color:"white"}} className="btn btn-outline-primary"> Sign out </button>
+               <button onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id');localStorage.removeItem('user'); window.location=('/')}}  style={{color:"white"}} className="btn btn-outline-primary"> Sign out </button>
             </div>
           </div>
         </div>
@@ -87,17 +128,17 @@ export default class UserComplaints extends Component {
                        <th>Status</th>
                    </tr>
                </thead>
-               <tbody >
-                   
+               <tbody >                                 
+                    
                   {this.state.complaints.map((complaint) => (
-                     <tr>
+                     <tr key = {complaint.complaint_id}>
 
                      <td>{complaint.title}</td>
                      <td >{complaint.gender}</td>
                      <td>{complaint.comment}</td>
                      <td>{complaint.status}</td>
-                     <td><button className="btn btn-outline-primary btn-lg">Accept</button></td>
-                     <td><button className="btn btn-outline-primary btn-lg">Reject</button></td>
+                     <td><button type="button" className="btn btn-outline-primary btn-lg" onClick= {() => this.acceptAction(complaint.complaint_id)}>Accept</button></td>
+                     <td><button className="btn btn-outline-primary btn-lg" onClick= {() => this.rejectAction(complaint.complaint_id)}>Reject</button></td>
                      
 
                    </tr>

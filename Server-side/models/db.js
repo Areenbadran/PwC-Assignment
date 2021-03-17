@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
 
-console.log(process.env.DATABASE_HOST)
+//Create connection with local database
 const connection = mysql.createPool({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,

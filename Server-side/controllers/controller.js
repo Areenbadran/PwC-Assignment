@@ -39,4 +39,17 @@ module.exports = {
             });
         },
 
+          //Edit user's status complaint 
+          actions: (req, res) => {
+            var complaint = [req.body.complaint_id, req.body.status];
+            model.actions(complaint, function (err, result) {
+            if (err) {
+                console.log("error in change complaint's status - controller", err);
+            }
+            console.log("Controller");
+            res.json(result);
+            });
+        },
+        
+
 };

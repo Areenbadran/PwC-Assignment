@@ -13,11 +13,13 @@ export default class Signup extends Component {
         this.state = {
             email: '',
             password: '',
+            userType: '',
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handleChangeType = this.handleChangeType.bind(this);
       }
  
         handleChangeEmail(event) {
@@ -31,6 +33,13 @@ export default class Signup extends Component {
                 password: event.target.value,
             })
         }
+
+        handleChangeType(event) {
+            this.setState({
+                userType: event.target.value,
+            })
+        }
+        
 
 
        //Sign in button
@@ -46,13 +55,19 @@ export default class Signup extends Component {
           data : JSON.stringify({
           email: this.state.email,
           password: this.state.password,
+          userType: this.state.userType,
           }),
           contentType: "application/json",
           success: function(data){
             console.log('data', data);
             localStorage.setItem ("token" ,data.token);
             localStorage.setItem ("id" ,data.result[0].user_id);
-            window.location = '/addComplaint';
+            localStorage.setItem ("user" ,data.result[0].userType);
+            if (localStorage.getItem("user") === "customer" ) {
+                window.location = '/addComplaint';
+            } else {
+                window.location = '/getAllComplaints';
+            }
           },
           error: function(err){
             console.log("error");
@@ -66,7 +81,7 @@ export default class Signup extends Component {
             }
             else {   
               swal({
-              title: "email or password is incorrect",
+              title: "email/password or user type is incorrect",
               text: "Fill a valid email or password",
               icon: "error",
               button: "Ok",
@@ -123,6 +138,22 @@ export default class Signup extends Component {
     <div class="signup-form">
         <form>
             <h2>Log in</h2>
+
+            <div class="form-group">
+			<div class="row">
+				<div class="col">
+                    <label for="user">Choose user type:</label>&nbsp;&nbsp;
+
+                    <select name="user" className="user" onChange= {this.handleChangeType}>
+                    <option value = "">---</option>
+                    <option value = "admin" >Admin</option>
+                    <option value = "customer" >Customer</option>
+                    </select>
+
+                </div>
+			</div>        	
+        </div>
+
             <div class="form-group">
             <i class="fa fa-user"> Email </i>
                 <input type="email" class="form-control"  required={true} value = {this.state.email} onChange = {this.handleChangeEmail}/>

@@ -174,7 +174,7 @@ export default class Signup extends Component {
 				<div class="col">
                     <label for="user">Choose user type:</label>&nbsp;&nbsp;
 
-                    <select name="user" id="user" onChange= {this.handleChangeType}>
+                    <select name="user" className="user" onChange= {this.handleChangeType}>
                     <option value = "">---</option>
                     <option value = "admin" >Admin</option>
                     <option value = "customer" >Customer</option>

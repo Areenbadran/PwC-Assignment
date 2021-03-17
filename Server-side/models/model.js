@@ -14,7 +14,6 @@ module.exports = {
     //Get all complaints for the Admin
     getAllComplaints: (callback) => {
         var queryStr = "SELECT * FROM complaint";
-        console.log("Model");
         connection.query(queryStr, function (err, result) {
           callback(err, result);
           console.log("error", err);
@@ -30,5 +29,16 @@ module.exports = {
           console.log("error", err);
         });
       },
+
+      //Change the status of a complaint from admin side
+      actions: (complaint, callback) => {
+        console.log(complaint + "there");
+        var queryStr = `UPDATE complaint SET status = '${complaint[1]}' WHERE complaint_id = '${complaint[0]}'`;
+        connection.query(queryStr, function (err, result) {
+          callback(err, result);
+          console.log("error", err);
+        });
+      },
+
 
 }
