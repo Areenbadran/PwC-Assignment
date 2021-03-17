@@ -36,7 +36,7 @@ app.post("/signup", (req, res) => {
    if (err) {
      console.log(err);
    }
-   //Check if the email already exist in the database.
+   //Check if the email already exist in the user database.
     if (email) {
      connection.query('SELECT * FROM user WHERE email = ?', [email], (error, results) => {
        if (results.length > 0) {
