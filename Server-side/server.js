@@ -14,8 +14,6 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
 const jwt = require('jsonwebtoken');
 
-// Serve the static files from the React app
-// app.use(express.static(path.join(__dirname, "client/public")));
 
 app.use(cors());
 
