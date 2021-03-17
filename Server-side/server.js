@@ -21,7 +21,6 @@ app.use(cors());
 
 app.use("/", router.router);
 
-
 app.get("/", function (req, res) {
   res.send("Home Page");
 });
@@ -100,6 +99,7 @@ app.post("/signin", (req, res) => {
         }
       );
     });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
