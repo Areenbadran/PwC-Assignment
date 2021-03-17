@@ -9,7 +9,7 @@ This website is a complaint management portal. Users will be able to register, l
 
 ## Logo:
 
-<img src= "./logo2.png" width = "100">
+<img src= "./Client-side/abc-company/src/images/logo2.png" width = "100">
 
 
 ## Technologies used:
