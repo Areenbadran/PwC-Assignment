@@ -2,7 +2,7 @@
 
 ## Task title:
 
-ABC Company
+ABC Company:
 ABC© solves clients' toughest challenges by providing unmatched services in strategy & consulting, interactive, technology and operations. Our purpose: To deliver on the promise of technology and human ingenuity. We embrace the power of change to create 360° value for our clients, people and communities.
 This website is a complaint management portal. Users will be able to register, login send a complaint and check the status of the complaint.
 
