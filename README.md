@@ -26,7 +26,6 @@ This website is a complaint management portal. Users will be able to register, l
     
 ## Installation:
 
-Installation:
 - Open the code with any text editor
 - Terminal
 - cd Server-side
