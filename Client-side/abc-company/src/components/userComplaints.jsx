@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import $ from 'jquery';
 import logo from "../images/logo2.png";
 
-
 export default class UserComplaints extends Component {
 
     constructor() {

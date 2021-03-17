@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import logo from "../images/logo2.png";
 import background from "../images/abc-5083097_1281.jpg";
 
-
-
 export default class Home extends Component {
   render() {
     return (

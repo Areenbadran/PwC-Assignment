@@ -4,7 +4,6 @@ import swal from 'sweetalert';
 import Background from '../images/abc-5083097_1281.jpg';
 import logo from "../images/logo2.png";
 
-
 export default class Signup extends Component {
 
     constructor() {
