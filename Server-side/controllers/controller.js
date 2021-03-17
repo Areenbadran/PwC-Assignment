@@ -1,7 +1,6 @@
 const express = require("express");
 var model = require("../models/model");
 
-
 module.exports = {
 
     //Adding a new complaint from authorized customer
@@ -27,7 +26,7 @@ module.exports = {
         });
       },
 
-        //Get all user's complaints 
+       //Get all user's complaints 
         getUserComplaints: (req, res) => {
             var complaint = req.params.id;
             model.getUserComplaints(complaint, function (err, result) {
@@ -44,7 +43,7 @@ module.exports = {
             var complaint = [req.body.complaint_id, req.body.status];
             model.actions(complaint, function (err, result) {
             if (err) {
-                console.log("error in change complaint's status - controller", err);
+                console.log("error in change complaint's status-controller", err);
             }
             console.log("Controller");
             res.json(result);
