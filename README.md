@@ -1,4 +1,4 @@
-# PwC-Assignment - ABC Company
+# PwC Assignment - ABC Company
 
 ## Task title:
 
